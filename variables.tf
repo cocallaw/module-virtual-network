@@ -2,6 +2,26 @@
 # This module allows the creation of a Virtual Network
 ##############################################################
 
+variable "existing_resource_group_name" {
+  description = "The name of an existing resource group."
+  type        = string
+}
+
+variable "existing_vnet_name" {
+  description = "The name of an existing virtual network."
+  type        = string
+}
+
+variable "existing_subnet_name_fe " {
+  description = "The name of an existing subnet for FE."
+  type        = string
+}
+
+variable "existing_subnet_name_aks" {
+  description = "The name of an existing subnet for AKS."
+  type        = string
+}
+
 variable "name" {
   description = "The name of the Virtual Network. (Optional) - names override"
   default     = null
