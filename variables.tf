@@ -12,7 +12,7 @@ variable "existing_vnet_name" {
   type        = string
 }
 
-variable "existing_subnet_name_fe " {
+variable "existing_subnet_name_fe" {
   description = "The name of an existing subnet for FE."
   type        = string
 }
