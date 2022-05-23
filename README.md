@@ -78,6 +78,10 @@ module "virtual-network" {
 | aks\_subnets | AKS subnets | <pre>map(object({<br>    private = any<br>    public  = any<br>    route_table = object({<br>      disable_bgp_route_propagation = bool<br>      routes                        = map(map(string))<br>      # keys are route names, value map is route properties (address_prefix, next_hop_type, next_hop_in_ip_address)<br>      # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/route_table#route<br>    })<br>  }))</pre> | n/a | yes |
 | dns\_servers | If applicable, a list of custom DNS servers to use inside your virtual network.  Unset will use default Azure-provided resolver | `list(string)` | n/a | yes |
 | enforce\_subnet\_names | enforce subnet names based on naming\_rules variable | `bool` | `false` | no |
+| existing\_resource\_group\_name | The name of an existing resource group. | `string` | n/a | yes |
+| existing\_subnet\_name\_aks | The name of an existing subnet for AKS. | `string` | n/a | yes |
+| existing\_subnet\_name\_fe | The name of an existing subnet for FE. | `string` | n/a | yes |
+| existing\_vnet\_name | The name of an existing virtual network. | `string` | n/a | yes |
 | name | The name of the Virtual Network. (Optional) - names override | `any` | n/a | yes |
 | names | Names to be applied to resources (inclusive) | <pre>object({<br>    environment = string<br>    location    = string<br>    product     = string<br>  })</pre> | <pre>{<br>  "environment": "tf",<br>  "location": "eastus2",<br>  "product": "iac"<br>}</pre> | no |
 | naming\_rules | naming conventions yaml file | `string` | `""` | no |
@@ -93,11 +97,8 @@ module "virtual-network" {
 
 | Name | Description |
 |------|-------------|
-| aks | Virtual network information matching AKS module input. |
+| aks\_sn\_id | Subnet data object. |
+| exist\_vnet\_name | Virtual network data object. |
+| fe\_sn\_id | Subnet data object. |
 | route\_tables | Maps of custom route tables. |
-| subnet | Map of subnet data objects. |
-| subnet\_nsg\_ids | Map of subnet ids to associated network\_security\_group ids. |
-| subnet\_nsg\_names | Map of subnet names to associated network\_security\_group names. |
-| subnets | Maps of subnet info. |
-| vnet | Virtual network data object. |
 <!--- END_TF_DOCS --->
