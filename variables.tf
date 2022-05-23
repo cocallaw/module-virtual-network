@@ -30,6 +30,7 @@ variable "name" {
 variable "resource_group_name" {
   description = "The name of an existing resource group."
   type        = string
+  default     = null
 }
 
 variable "names" {
@@ -68,6 +69,7 @@ variable "enforce_subnet_names" {
 variable "address_space" {
   description = "CIDRs for virtual network"
   type        = list(string)
+  default     = null
 }
 
 variable "dns_servers" {
