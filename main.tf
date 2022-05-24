@@ -8,7 +8,6 @@ data "azurerm_resource_group" "exist_rg" {
 
 data "azurerm_virtual_network" "exist_vnet" {
   name                = var.existing_vnet_name
-  location            = data.azurerm_resource_group.exist_rg.location
   resource_group_name = data.azurerm_resource_group.exist_rg.name
 }
 
@@ -100,8 +99,8 @@ resource "azurerm_virtual_network_peering" "peer" {
   for_each = local.peers
 
   name                         = each.key
-  resource_group_name          = data.azurerm_resource_group.main.name
-  virtual_network_name         = azurerm_virtual_network.vnet.name
+  resource_group_name          = data.azurerm_resource_group.exist_rg.name
+  virtual_network_name         = data.azurerm_virtual_network.exist_vnet.name
   remote_virtual_network_id    = each.value.id
   allow_virtual_network_access = each.value.allow_virtual_network_access
   allow_forwarded_traffic      = each.value.allow_forwarded_traffic
