@@ -98,7 +98,8 @@ module "virtual-network" {
 | Name | Description |
 |------|-------------|
 | aks\_sn\_id | Subnet data object. |
-| exist\_vnet\_name | Virtual network data object. |
+| exist\_vnet\_id | Virtual network id. |
+| exist\_vnet\_name | Virtual network name. |
 | fe\_sn\_id | Subnet data object. |
 | route\_tables | Maps of custom route tables. |
 <!--- END_TF_DOCS --->
